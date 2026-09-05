@@ -6,6 +6,10 @@
 <title>Spot the Lie · Win the Prize — AdLift</title>
 <meta name="description" content="Six stats about AI &amp; search are on the board. Exactly one is false. Call it right, drop your details, and you're in the draw for AirPods + a WHOOP band.">
 <meta name="theme-color" content="#e05d00">
+<!-- Campaign page: keep out of the index (transient promo) but pass link value.
+     When hosted on the real domain, update the canonical below to the live URL. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://www.adlift.com/spot-the-lie">
 <!-- Open Graph / social -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Spot the Lie. Win the Prize. — AdLift">
@@ -14,6 +18,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AdLift",
+  "url": "https://www.adlift.com",
+  "logo": "https://www.adlift.com/favicon.ico",
+  "slogan": "Acquire. Amplify. Advance."
+}
+</script>
 <style>
   :root{
     --ink:#1F2734;
@@ -311,13 +325,17 @@
         <div class="stage">
           <div class="slide is-active" data-idx="0">
             <img class="fallback" src="assets/airpods.jpg" alt="Apple AirPods">
-            <video class="clip" data-idx="0" muted playsinline preload="auto" poster="assets/airpods.jpg">
+            <video class="clip" data-idx="0" muted playsinline preload="none" poster="assets/airpods.jpg">
+              <source src="uploads/airpods.webm" type="video/webm">
+              <source src="uploads/airpods.mp4" type="video/mp4">
               <source src="uploads/Wireless_earbuds_product_animation_202609041612.mp4" type="video/mp4">
             </video>
           </div>
           <div class="slide" data-idx="1">
             <img class="fallback" src="assets/whoop.jpg" alt="WHOOP band">
-            <video class="clip" data-idx="1" muted playsinline preload="auto" poster="assets/whoop.jpg">
+            <video class="clip" data-idx="1" muted playsinline preload="none" poster="assets/whoop.jpg">
+              <source src="uploads/whoop.webm" type="video/webm">
+              <source src="uploads/whoop.mp4" type="video/mp4">
               <source src="uploads/Fitness_band_product_animation_202609041634.mp4" type="video/mp4">
             </video>
           </div>
@@ -400,8 +418,10 @@
       </div>
       <label class="consent" id="consentRow">
         <input type="checkbox" id="f-consent" name="consent">
-        <span>OK to contact me about AdLift updates.</span>
+        <span>OK to contact me about AdLift updates. See our <a href="https://www.adlift.com/privacy-policy/" target="_blank" rel="noopener" style="color:var(--orange);text-decoration:underline">Privacy&nbsp;Policy</a>.</span>
       </label>
+      <!-- honeypot: off-screen, hidden from people; bots fill it and get rejected -->
+      <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;opacity:0">
       <button class="btn" id="btnFinish" type="submit">Enter the draw &#8594;</button>
     </form>
 
@@ -536,6 +556,8 @@
 
   entryForm.addEventListener("submit", function(e){
     e.preventDefault();
+    // spam honeypot: real users never fill this hidden field
+    if (document.getElementById("f-website").value) { finish(); return; }
     var f = entryForm;
     var name = f.name.value.trim();
     var email = f.email.value.trim();
@@ -652,7 +674,9 @@
   }
 
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (clips[0]){
+
+  function startShowcase(){
+    if (!clips[0]) return;
     if (reduce){
       play(clips[0]);                 // gentle: first product only, no auto-switch
     } else if (slides.length > 1){
@@ -664,6 +688,14 @@
       window.addEventListener("pointerdown", function once(){ play(clips[active]); window.removeEventListener("pointerdown", once); }, { passive:true });
     }
   }
+  // preload="none" + deferred start: the poster paints first (fast LCP), and the
+  // clips only begin loading after the page has painted, so they never block it.
+  function deferStart(){
+    if ("requestIdleCallback" in window) requestIdleCallback(startShowcase, { timeout:1600 });
+    else setTimeout(startShowcase, 250);
+  }
+  if (document.readyState === "complete") deferStart();
+  else window.addEventListener("load", deferStart);
 })();
 </script>
 </body>

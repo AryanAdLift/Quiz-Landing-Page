@@ -33,14 +33,15 @@ the relative `assets/` and `uploads/` paths resolve normally.
 
 ## The prize videos
 
-The hero shows two cross-fading product animations from `uploads/`:
+The hero plays two product clips from `uploads/` in sequence — the AirPods clip rotates
+through, then a cinematic cross-fade hands off to the WHOOP band, looping:
 
 - `uploads/Wireless_earbuds_product_animation_202609041612.mp4`
 - `uploads/Fitness_band_product_animation_202609041634.mp4`
 
-These are large and are **not committed**. If they're absent, the page gracefully falls
-back to the product photos in `assets/` — so it looks correct with or without them. Drop
-the two `.mp4` files into `uploads/` (same filenames) to enable the animated hero.
+Both are committed (~3 MB total). If a clip is ever missing, the page gracefully falls
+back to the product photos in `assets/` — so the hero always renders. To swap a clip,
+keep the same filename (or update its `<source>` in `index.html`).
 
 ## Wiring up real entries
 

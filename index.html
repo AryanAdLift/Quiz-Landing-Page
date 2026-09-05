@@ -115,37 +115,54 @@
   .scrollcue{display:flex;align-items:center;gap:9px;margin-top:30px;color:rgba(255,255,255,.72);font-weight:600;font-size:12px}
   .scrollcue .arr{font-size:18px;animation:bob 1.8s ease-in-out infinite}
 
-  /* prize showcase */
-  .showcase{position:relative;height:clamp(320px,42vw,430px);display:flex;align-items:center;justify-content:center}
+  /* ---------- prize showcase (premium studio stage) ---------- */
+  .showcase{position:relative;height:clamp(340px,44vw,470px);display:flex;align-items:center;justify-content:center;perspective:1200px}
   .showcase .glow{
-    position:absolute;width:min(78%,380px);aspect-ratio:1;border-radius:50%;
-    background:radial-gradient(circle,rgba(255,255,255,.3),rgba(249,196,61,.16) 55%,transparent 72%);
-    animation:glow 4.5s ease-in-out infinite;
+    position:absolute;width:min(88%,460px);aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.34),rgba(249,196,61,.18) 52%,transparent 70%);
+    filter:blur(4px);animation:glow 5s ease-in-out infinite;
   }
-  .card3d{
-    position:relative;width:clamp(240px,32vw,372px);aspect-ratio:372/404;
-    border-radius:28px;overflow:hidden;background:#0b0b0d;
-    box-shadow:0 34px 70px rgba(60,20,0,.5), inset 0 0 0 1px rgba(255,255,255,.09);
-    animation:floaty 4.5s ease-in-out infinite;
+  .floor{
+    position:absolute;z-index:0;bottom:clamp(6px,3vw,24px);width:58%;height:28px;border-radius:50%;
+    background:radial-gradient(ellipse at center,rgba(0,0,0,.34),transparent 70%);filter:blur(8px);
   }
-  .vslide{position:absolute;inset:0;transition:opacity .8s ease}
-  .vslide.hide{opacity:0}
-  .vslide.show{opacity:1}
-  .vslide .vfallback,.vslide .vmedia{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .vslide .vmedia{z-index:1}
-  .card3d .vignette{position:absolute;inset:0;pointer-events:none;z-index:2;background:radial-gradient(130% 90% at 50% 0%,transparent 52%,rgba(0,0,0,.5) 100%)}
-  .card3d .tag{position:absolute;top:16px;left:18px;z-index:3;font-weight:600;font-size:10px;letter-spacing:.16em;color:rgba(255,255,255,.6)}
-  .card3d .cap{
-    position:absolute;left:0;right:0;bottom:0;z-index:3;
+  .stage{
+    position:relative;z-index:1;width:clamp(250px,33vw,384px);aspect-ratio:372/404;
+    border-radius:30px;overflow:hidden;
+    background:radial-gradient(120% 100% at 50% 0%,#17171b 0%,#0b0b0d 60%,#050506 100%);
+    box-shadow:0 46px 92px rgba(50,16,0,.55), 0 10px 26px rgba(0,0,0,.4), inset 0 0 0 1px rgba(255,255,255,.08);
+    animation:floaty 6s ease-in-out infinite;will-change:transform;
+  }
+  .slide{
+    position:absolute;inset:0;z-index:1;opacity:0;transform:scale(1.07);filter:blur(7px);
+    transition:opacity .9s ease, transform 1.15s cubic-bezier(.2,.7,.2,1), filter .9s ease;
+    will-change:opacity,transform,filter;
+  }
+  .slide.is-active{opacity:1;transform:scale(1);filter:blur(0)}
+  .slide .fallback,.slide .clip{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .slide .clip{z-index:1}
+  /* sweeping glass sheen */
+  .stage .sheen{
+    position:absolute;inset:0;z-index:2;pointer-events:none;mix-blend-mode:screen;
+    background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.12) 48%,rgba(255,255,255,.02) 56%,transparent 72%);
+    transform:translateX(-75%);animation:sheen 7s ease-in-out infinite;
+  }
+  .stage .vignette{position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(135% 95% at 50% 0%,transparent 48%,rgba(0,0,0,.55) 100%)}
+  .stage .rim{position:absolute;inset:0;z-index:4;pointer-events:none;border-radius:30px;box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -34px 60px rgba(0,0,0,.42)}
+  .stage .tag{position:absolute;top:17px;left:19px;z-index:5;font-weight:600;font-size:10px;letter-spacing:.18em;color:rgba(255,255,255,.62)}
+  .stage .cap{
+    position:absolute;left:0;right:0;bottom:0;z-index:5;
     padding:16px 18px;display:flex;justify-content:space-between;align-items:center;
-    background:linear-gradient(0deg,rgba(0,0,0,.65),transparent);pointer-events:none;
+    background:linear-gradient(0deg,rgba(0,0,0,.7),transparent);pointer-events:none;
   }
-  .card3d .cap .txt{font-weight:700;font-size:13.5px;color:#fff}
-  .cdots{display:flex;gap:7px}
-  .cdot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.32);transition:background .4s}
-  .cdot.on{background:#fff}
-  .spark{position:absolute;color:#fff;animation:glow 3s ease-in-out infinite}
+  .cap-txt{font-weight:700;font-size:13.5px;color:#fff;letter-spacing:.01em;white-space:nowrap;transition:opacity .4s ease}
+  .cap-txt.swap{opacity:0}
+  .cdots{display:flex;gap:6px}
+  .cdot{width:14px;height:5px;border-radius:5px;background:rgba(255,255,255,.28);transition:background .4s,width .4s}
+  .cdot.on{background:#fff;width:22px}
+  .spark{position:absolute;z-index:2;color:#fff;animation:glow 3s ease-in-out infinite}
   .spark.g{color:var(--gold)}
+  @keyframes sheen{0%{transform:translateX(-75%)}55%,100%{transform:translateX(75%)}}
 
   /* ---------- game (still on orange) ---------- */
   .game{position:relative;z-index:2;padding:8px clamp(20px,5vw,48px) clamp(44px,6vw,64px)}
@@ -278,31 +295,34 @@
         <a class="scrollcue" href="#game"><span>Scroll to play</span><span class="arr">&#8595;</span></a>
       </div>
 
-      <!-- 3D video showcase -->
+      <!-- premium product showcase -->
       <div class="showcase">
         <div class="glow" aria-hidden="true"></div>
-        <div class="card3d">
-          <div class="vslide show" data-idx="0">
-            <img class="vfallback" src="assets/airpods.jpg" alt="Apple AirPods">
-            <video class="vmedia" muted loop playsinline preload="auto" poster="assets/airpods.jpg">
+        <div class="floor" aria-hidden="true"></div>
+        <div class="stage">
+          <div class="slide is-active" data-idx="0">
+            <img class="fallback" src="assets/airpods.jpg" alt="Apple AirPods">
+            <video class="clip" data-idx="0" muted playsinline preload="auto" poster="assets/airpods.jpg">
               <source src="uploads/Wireless_earbuds_product_animation_202609041612.mp4" type="video/mp4">
             </video>
           </div>
-          <div class="vslide hide" data-idx="1">
-            <img class="vfallback" src="assets/whoop.jpg" alt="WHOOP band">
-            <video class="vmedia" muted loop playsinline preload="auto" poster="assets/whoop.jpg">
+          <div class="slide" data-idx="1">
+            <img class="fallback" src="assets/whoop.jpg" alt="WHOOP band">
+            <video class="clip" data-idx="1" muted playsinline preload="auto" poster="assets/whoop.jpg">
               <source src="uploads/Fitness_band_product_animation_202609041634.mp4" type="video/mp4">
             </video>
           </div>
+          <div class="sheen" aria-hidden="true"></div>
           <div class="vignette" aria-hidden="true"></div>
+          <div class="rim" aria-hidden="true"></div>
           <span class="tag">THE PRIZE</span>
           <div class="cap">
-            <span class="txt" id="capText">AirPods (4th Gen)</span>
+            <span class="cap-txt" id="capText">AirPods (4th Gen)</span>
             <span class="cdots"><span class="cdot on" data-dot="0"></span><span class="cdot" data-dot="1"></span></span>
           </div>
         </div>
-        <span class="spark" style="top:2%;right:16%;font-size:24px">&#10022;</span>
-        <span class="spark g" style="bottom:12%;left:8%;font-size:16px;animation-delay:.5s">&#10022;</span>
+        <span class="spark" style="top:3%;right:14%;font-size:24px">&#10022;</span>
+        <span class="spark g" style="bottom:15%;left:8%;font-size:16px;animation-delay:.5s">&#10022;</span>
       </div>
     </div>
 
@@ -546,38 +566,73 @@
     });
   }
 
-  /* ---- prize showcase: cross-fade the two product clips ---- */
-  var slides = Array.prototype.slice.call(document.querySelectorAll(".vslide"));
-  var vids   = slides.map(function(s){ return s.querySelector(".vmedia"); });
-  var dots   = Array.prototype.slice.call(document.querySelectorAll(".cdot"));
+  /* ---- prize showcase: cinematic AirPods → WHOOP sequence ----
+     Each clip plays its full rotation, then a cross-fade (scale + defocus)
+     hands off to the other. Timing follows the clips themselves (the 'ended'
+     event) with a minimum dwell so neither product feels rushed, and a max
+     dwell as a safety net if a clip can't play. */
+  var slides  = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+  var clips   = slides.map(function(s){ return s.querySelector(".clip"); });
+  var dots    = Array.prototype.slice.call(document.querySelectorAll(".cdot"));
   var capText = document.getElementById("capText");
   var CAPTIONS = ["AirPods (4th Gen)", "WHOOP Band"];
-  var active = 0;
+  var MIN_DWELL = 3400;   // ms — each product reads as premium, not rushed
+  var MAX_DWELL = 8000;   // ms — safety net if 'ended' never fires
+  var active = 0, shownAt = 0, timer = null;
 
-  vids.forEach(function(v){
+  function play(v){ if (v){ try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch(e){} } }
+
+  clips.forEach(function(v){
     if (!v) return;
-    // if the mp4 is missing, hide the video so the photo fallback shows
+    v.loop = false;
+    // if the mp4 is missing/undecodable, hide the video so the photo shows
     v.addEventListener("error", function(){ v.style.display = "none"; });
-    var p = v.play && v.play();
-    if (p && p.catch) p.catch(function(){});
+    // when a clip finishes its rotation, hand off (respecting the min dwell)
+    v.addEventListener("ended", function(){
+      if (String(active) === v.dataset.idx) scheduleNext();
+    });
   });
 
-  function play(v){ if (v){ var p = v.play && v.play(); if (p && p.catch) p.catch(function(){}); } }
+  function setCaption(n){
+    capText.classList.add("swap");
+    setTimeout(function(){ capText.textContent = CAPTIONS[n] || ""; capText.classList.remove("swap"); }, 240);
+  }
 
-  function showSlide(n){
-    active = n;
-    slides.forEach(function(s, i){
-      s.classList.toggle("show", i === n);
-      s.classList.toggle("hide", i !== n);
-    });
+  function show(n){
+    active = n; shownAt = Date.now();
+    slides.forEach(function(s, i){ s.classList.toggle("is-active", i === n); });
     dots.forEach(function(d, i){ d.classList.toggle("on", i === n); });
-    capText.textContent = CAPTIONS[n] || "";
-    play(vids[n]);
+    setCaption(n);
+    var v = clips[n];
+    if (v){ try { v.currentTime = 0; } catch(e){} play(v); }
+    armSafety();
+  }
+
+  function next(){ show(active ? 0 : 1); }
+
+  function scheduleNext(){            // called on 'ended'
+    var wait = Math.max(0, MIN_DWELL - (Date.now() - shownAt));
+    clearTimeout(timer);
+    timer = setTimeout(next, wait);
+  }
+
+  function armSafety(){               // fires only if 'ended' never comes
+    clearTimeout(timer);
+    timer = setTimeout(next, MAX_DWELL);
   }
 
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (slides.length > 1 && !reduce){
-    setInterval(function(){ showSlide(active ? 0 : 1); }, 3000);
+  if (clips[0]){
+    if (reduce){
+      play(clips[0]);                 // gentle: first product only, no auto-switch
+    } else if (slides.length > 1){
+      shownAt = Date.now();
+      play(clips[0]);
+      armSafety();
+      // autoplay safety: resume on tab focus and on first interaction
+      document.addEventListener("visibilitychange", function(){ if (!document.hidden) play(clips[active]); });
+      window.addEventListener("pointerdown", function once(){ play(clips[active]); window.removeEventListener("pointerdown", once); }, { passive:true });
+    }
   }
 })();
 </script>

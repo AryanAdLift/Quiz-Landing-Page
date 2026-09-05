@@ -4,6 +4,10 @@ adlift standee v5 (1)_compressed.pdf
 Airpod.jpg
 61Fe+1-71-L.jpg
 
+# Redundant copies of the hero clips at repo root — the tracked copies live in uploads/
+/*.mp4
+/*.mov
+
 # OS / editor cruft
 .DS_Store
 Thumbs.db

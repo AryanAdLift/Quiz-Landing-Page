@@ -155,8 +155,9 @@
     padding:16px 18px;display:flex;justify-content:space-between;align-items:center;
     background:linear-gradient(0deg,rgba(0,0,0,.7),transparent);pointer-events:none;
   }
-  .cap-txt{font-weight:700;font-size:13.5px;color:#fff;letter-spacing:.01em;white-space:nowrap;transition:opacity .45s ease}
-  .cap-txt.swap{opacity:0}
+  .caps{position:relative;display:inline-block;min-width:132px;height:17px}
+  .capname{position:absolute;left:0;top:0;font-weight:700;font-size:13.5px;color:#fff;letter-spacing:.01em;white-space:nowrap;opacity:0;transition:opacity .9s ease}
+  .capname.is-on{opacity:1}
   .cdots{display:flex;gap:6px}
   .cdot{width:14px;height:5px;border-radius:5px;background:rgba(255,255,255,.28);transition:background .4s,width .4s}
   .cdot.on{background:#fff;width:22px}
@@ -317,7 +318,10 @@
           <div class="rim" aria-hidden="true"></div>
           <span class="tag">THE PRIZE</span>
           <div class="cap">
-            <span class="cap-txt" id="capText">AirPods (4th Gen)</span>
+            <span class="caps">
+              <span class="capname is-on" data-idx="0">AirPods (4th Gen)</span>
+              <span class="capname" data-idx="1">WHOOP Band</span>
+            </span>
             <span class="cdots"><span class="cdot on" data-dot="0"></span><span class="cdot" data-dot="1"></span></span>
           </div>
         </div>
@@ -574,8 +578,7 @@
   var slides  = Array.prototype.slice.call(document.querySelectorAll(".slide"));
   var clips   = slides.map(function(s){ return s.querySelector(".clip"); });
   var dots    = Array.prototype.slice.call(document.querySelectorAll(".cdot"));
-  var capText = document.getElementById("capText");
-  var CAPTIONS = ["AirPods (4th Gen)", "WHOOP Band"];
+  var capNames = Array.prototype.slice.call(document.querySelectorAll(".capname"));
   var MIN_DWELL = 3400;   // ms — each product reads as premium, not rushed
   var MAX_DWELL = 8000;   // ms — safety net if 'ended' never fires
   var active = 0, shownAt = 0, timer = null;
@@ -593,17 +596,13 @@
     });
   });
 
-  function setCaption(n){
-    // flip the label at the cross-fade midpoint so text + product change together
-    capText.classList.add("swap");
-    setTimeout(function(){ capText.textContent = CAPTIONS[n] || ""; capText.classList.remove("swap"); }, 460);
-  }
-
   function show(n){
     active = n; shownAt = Date.now();
+    // slide + label share the same class-toggle and the same transition, so the
+    // caption cross-fades in perfect lockstep with the product — never out of sync
     slides.forEach(function(s, i){ s.classList.toggle("is-active", i === n); });
+    capNames.forEach(function(c, i){ c.classList.toggle("is-on", i === n); });
     dots.forEach(function(d, i){ d.classList.toggle("on", i === n); });
-    setCaption(n);
     var v = clips[n];
     if (v){ try { v.currentTime = 0; } catch(e){} play(v); }
     armSafety();

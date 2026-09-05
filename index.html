@@ -155,7 +155,7 @@
     padding:16px 18px;display:flex;justify-content:space-between;align-items:center;
     background:linear-gradient(0deg,rgba(0,0,0,.7),transparent);pointer-events:none;
   }
-  .cap-txt{font-weight:700;font-size:13.5px;color:#fff;letter-spacing:.01em;white-space:nowrap;transition:opacity .4s ease}
+  .cap-txt{font-weight:700;font-size:13.5px;color:#fff;letter-spacing:.01em;white-space:nowrap;transition:opacity .45s ease}
   .cap-txt.swap{opacity:0}
   .cdots{display:flex;gap:6px}
   .cdot{width:14px;height:5px;border-radius:5px;background:rgba(255,255,255,.28);transition:background .4s,width .4s}
@@ -594,8 +594,9 @@
   });
 
   function setCaption(n){
+    // flip the label at the cross-fade midpoint so text + product change together
     capText.classList.add("swap");
-    setTimeout(function(){ capText.textContent = CAPTIONS[n] || ""; capText.classList.remove("swap"); }, 240);
+    setTimeout(function(){ capText.textContent = CAPTIONS[n] || ""; capText.classList.remove("swap"); }, 460);
   }
 
   function show(n){

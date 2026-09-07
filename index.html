@@ -64,6 +64,7 @@
     white-space:nowrap;
   }
   .wchip.solid{background:rgba(255,255,255,.14);border-color:transparent}
+  .wchip.light{background:#fff;border-color:transparent;color:var(--ink);box-shadow:0 6px 16px rgba(120,45,0,.14)}
   .chip{
     display:inline-flex;align-items:center;gap:5px;
     border:1.5px solid rgba(31,39,52,.28);border-radius:20px;
@@ -126,6 +127,13 @@
   }
   .hook .lede b{color:#fff;font-weight:700}
   .hook-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+  /* heading design accents */
+  .hook-copy{position:relative}
+  .headspark{position:absolute;top:-14px;left:-30px;font-size:22px;z-index:1}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px}
+  .eyebrow-tick{color:var(--gold);font-size:15px;line-height:1}
+  .hook h1 .mark{position:relative;display:inline-block;color:var(--ink);z-index:0;padding:0 .08em}
+  .hook h1 .mark::before{content:"";position:absolute;z-index:-1;left:-.04em;right:-.04em;top:10%;bottom:8%;background:linear-gradient(180deg,#ffd76a,var(--gold));border-radius:7px;transform:rotate(-1.4deg);box-shadow:0 4px 16px rgba(249,196,61,.45)}
   .scrollcue{display:flex;align-items:center;gap:9px;margin-top:30px;color:rgba(255,255,255,.72);font-weight:600;font-size:12px}
   .scrollcue .arr{font-size:18px;animation:bob 1.8s ease-in-out infinite}
 
@@ -288,6 +296,11 @@
 
   <section class="hero">
     <div class="rings" aria-hidden="true">
+      <!-- top-left corner motif -->
+      <div class="ring" style="width:360px;height:360px;left:-150px;top:-160px;border-color:rgba(255,255,255,.14)"></div>
+      <div class="ring" style="width:230px;height:230px;left:-80px;top:-90px;border-color:rgba(255,255,255,.11)"></div>
+      <div class="ring" style="width:120px;height:120px;left:-24px;top:-30px;border-color:rgba(249,196,61,.28)"></div>
+      <!-- bottom + right motif -->
       <div class="ring" style="width:520px;height:520px;left:-160px;bottom:-190px"></div>
       <div class="ring" style="width:360px;height:360px;left:-70px;bottom:-120px"></div>
       <div class="ring" style="width:640px;height:640px;right:-260px;bottom:-260px"></div>
@@ -306,14 +319,15 @@
 
     <!-- SECTION 1: HOOK -->
     <div class="hook">
-      <div>
-        <span class="wchip solid">AI SEARCH CHALLENGE</span>
-        <h1>SPOT THE LIE.<br>WIN THE PRIZE.</h1>
+      <div class="hook-copy">
+        <span class="spark g headspark" aria-hidden="true">&#10022;</span>
+        <span class="eyebrow"><span class="eyebrow-tick" aria-hidden="true">&#10022;</span><span class="wchip solid">AI SEARCH CHALLENGE</span></span>
+        <h1>SPOT THE <span class="mark">LIE.</span><br>WIN THE PRIZE.</h1>
         <p class="lede">Six stats about AI &amp; search are on the board. Exactly one is false. Call it right, drop your details, and you're in the draw for <b>AirPods</b> + a <b>WHOOP band</b>.</p>
         <div class="hook-chips">
-          <span class="wchip">1 lucky winner</span>
-          <span class="wchip">Picked at random</span>
-          <span class="wchip">~30 seconds</span>
+          <span class="wchip light">2 lucky winners</span>
+          <span class="wchip light">Picked at random</span>
+          <span class="wchip light">~30 seconds</span>
         </div>
         <a class="scrollcue" href="#game"><span>Scroll to play</span><span class="arr">&#8595;</span></a>
       </div>
@@ -328,7 +342,6 @@
             <video class="clip" data-idx="0" muted playsinline preload="none" poster="assets/airpods.jpg">
               <source src="uploads/airpods.webm" type="video/webm">
               <source src="uploads/airpods.mp4" type="video/mp4">
-              <source src="uploads/Wireless_earbuds_product_animation_202609041612.mp4" type="video/mp4">
             </video>
           </div>
           <div class="slide" data-idx="1">
@@ -336,7 +349,6 @@
             <video class="clip" data-idx="1" muted playsinline preload="none" poster="assets/whoop.jpg">
               <source src="uploads/whoop.webm" type="video/webm">
               <source src="uploads/whoop.mp4" type="video/mp4">
-              <source src="uploads/Fitness_band_product_animation_202609041634.mp4" type="video/mp4">
             </video>
           </div>
           <div class="sheen" aria-hidden="true"></div>
@@ -429,7 +441,7 @@
     <div class="done" id="doneCard" hidden>
       <div class="confetti">&#127881; YOU'RE IN!</div>
       <h3>ENTRY RECEIVED.</h3>
-      <p>One lucky winner is drawn at random by AdLift. We'll email and call the winner. Good luck!</p>
+      <p>Two lucky winners are drawn at random by AdLift. We'll email and call the winners. Good luck!</p>
       <div class="chips">
         <a class="chip" href="https://www.instagram.com/adlift/" target="_blank" rel="noopener">&#8635; Follow @AdLift</a>
         <button class="chip" id="btnShare" type="button" style="cursor:pointer">Share the challenge</button>

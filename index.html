@@ -1,306 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spot the Lie · Win the Prize — AdLift</title>
-<meta name="description" content="Six stats about AI &amp; search are on the board. Exactly one is false. Call it right, drop your details, and you're in the draw for AirPods + a WHOOP band.">
-<meta name="theme-color" content="#e05d00">
-<!-- Campaign page: keep out of the index (transient promo) but pass link value.
-     When hosted on the real domain, update the canonical below to the live URL. -->
-<meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://www.adlift.com/spot-the-lie">
-<!-- Open Graph / social -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Spot the Lie. Win the Prize. — AdLift">
-<meta property="og:description" content="One of six AI-search stats is false. Spot the lie and enter the draw for AirPods + a WHOOP band.">
-<meta property="og:image" content="assets/airpods.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "AdLift",
-  "url": "https://www.adlift.com",
-  "logo": "https://www.adlift.com/favicon.ico",
-  "slogan": "Acquire. Amplify. Advance."
-}
-</script>
-<style>
-  :root{
-    --ink:#1F2734;
-    --ink-2:#141a23;
-    --orange:#E76100;
-    --orange-d:#b64f00;
-    --cream:#f4f1ec;
-    --gold:#F9C43D;
-    --radius:16px;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;
-    background:var(--cream);
-    font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-    color:var(--ink);
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
-  }
-  img,video{max-width:100%;display:block}
-  a{color:inherit}
-  ::selection{background:rgba(231,97,0,.22)}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  /* ---------- shared bits ---------- */
-  .brand{display:inline-flex;align-items:baseline;font-weight:800;letter-spacing:.02em;line-height:1}
-  .brand .up{color:var(--orange)}
-  .tagline{font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(31,39,52,.5);margin-top:5px}
+  <!-- ============================ SEO / META ============================ -->
+  <title>Spot the Lie · Win the Prize — AdLift</title>
+  <meta name="description" content="Six stats about AI &amp; search are on the board. Exactly one is false. Call it right, drop your details, and you're in the draw for AirPods + a WHOOP band.">
+  <meta name="theme-color" content="#e05d00">
+  <!-- Campaign page: keep out of the index (transient promo) but pass link value.
+       When hosted on the real domain, update the canonical below to the live URL. -->
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://www.adlift.com/spot-the-lie">
 
-  .wchip{
-    display:inline-flex;align-items:center;gap:6px;
-    border:1.5px solid rgba(255,255,255,.4);border-radius:22px;
-    padding:6px 14px;font-weight:600;font-size:11px;color:#fff;letter-spacing:.02em;
-    white-space:nowrap;
-  }
-  .wchip.solid{background:rgba(255,255,255,.14);border-color:transparent}
-  .wchip.light{background:#fff;border-color:transparent;color:var(--ink);box-shadow:0 6px 16px rgba(120,45,0,.14)}
-  .chip{
-    display:inline-flex;align-items:center;gap:5px;
-    border:1.5px solid rgba(31,39,52,.28);border-radius:20px;
-    padding:5px 12px;font-weight:600;font-size:11px;color:rgba(31,39,52,.62);background:#fff;
-  }
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Spot the Lie. Win the Prize. — AdLift">
+  <meta property="og:description" content="One of six AI-search stats is false. Spot the lie and enter the draw for AirPods + a WHOOP band.">
+  <meta property="og:image" content="assets/airpods.jpg">
 
-  .ring{position:absolute;border-radius:50%;border:2px solid rgba(255,255,255,.15);pointer-events:none}
+  <!-- ============================ FONTS ============================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  .btn{
-    border:0;border-radius:12px;background:var(--orange);color:#fff;
-    text-align:center;font-family:inherit;font-weight:600;font-size:15px;
-    padding:15px 20px;box-shadow:0 3px 0 var(--orange-d);cursor:pointer;
-    transition:transform .12s ease, box-shadow .12s ease, background .15s ease;
-    -webkit-tap-highlight-color:transparent;
-  }
-  .btn:hover{transform:translateY(-1px)}
-  .btn:active{transform:translateY(1px);box-shadow:0 1px 0 var(--orange-d)}
-  .btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
-  .btn-dark{background:var(--ink);color:#fff;box-shadow:0 4px 0 #0c1219}
-  .btn-dark:active{box-shadow:0 1px 0 #0c1219}
-  .btn[disabled],.btn.off{
-    background:rgba(255,255,255,.22)!important;color:rgba(255,255,255,.65)!important;
-    box-shadow:0 3px 0 rgba(0,0,0,.14)!important;cursor:not-allowed;transform:none!important;
-  }
+  <!-- ============================ STYLES ============================ -->
+  <link rel="stylesheet" href="css/styles.css">
 
-  /* ---------- page shell ---------- */
-  .page{max-width:1240px;margin:0 auto;background:#fff;border-radius:0}
-  @media(min-width:1120px){
-    .page{margin:26px auto;border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(31,39,52,.16)}
-  }
+  <!-- ============================ SCRIPT ============================ -->
+  <script src="js/main.js" defer></script>
 
-  /* ---------- hero (orange) ---------- */
-  .hero{
-    position:relative;overflow:hidden;
-    background:linear-gradient(158deg,#f06c08 0%,#e05d00 55%,#cf5400 100%);
-    color:#fff;
+  <!-- ============================ STRUCTURED DATA ============================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AdLift",
+    "url": "https://www.adlift.com",
+    "logo": "https://www.adlift.com/favicon.ico",
+    "slogan": "Acquire. Amplify. Advance."
   }
-  .hero .rings{position:absolute;inset:0;pointer-events:none}
-  nav.top{
-    position:relative;z-index:2;
-    display:flex;justify-content:space-between;align-items:center;
-    padding:22px clamp(20px,5vw,48px);
-  }
-  nav.top .brand{font-size:24px;color:#fff}
-  nav.top .brand .up{color:#fff}
-  nav.top .tagline{color:rgba(255,255,255,.62)}
-
-  .hook{
-    position:relative;z-index:2;
-    display:grid;grid-template-columns:1.08fr 1fr;gap:28px;align-items:center;
-    padding:clamp(28px,5vw,44px) clamp(20px,5vw,48px) clamp(40px,6vw,64px);
-  }
-  .hook h1{
-    font-weight:800;font-size:clamp(38px,6.4vw,62px);line-height:.98;
-    letter-spacing:-.01em;margin:18px 0 0;color:#fff;
-  }
-  .hook .lede{
-    font-size:clamp(17px,2vw,20px);line-height:1.58;color:rgba(255,255,255,.92);
-    margin-top:20px;max-width:480px;
-  }
-  .hook .lede b{color:#fff;font-weight:700}
-  .hook-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
-  /* heading design accents */
-  .hook-copy{position:relative}
-  .headspark{position:absolute;top:-14px;left:-30px;font-size:22px;z-index:1}
-  .eyebrow{display:inline-flex;align-items:center;gap:9px}
-  .eyebrow-tick{color:var(--gold);font-size:15px;line-height:1}
-  .hook h1 .mark{position:relative;display:inline-block;color:var(--ink);z-index:0;padding:0 .08em}
-  .hook h1 .mark::before{content:"";position:absolute;z-index:-1;left:-.04em;right:-.04em;top:10%;bottom:8%;background:linear-gradient(180deg,#ffd76a,var(--gold));border-radius:7px;transform:rotate(-1.4deg);box-shadow:0 4px 16px rgba(249,196,61,.45)}
-  .scrollcue{display:flex;align-items:center;gap:9px;margin-top:30px;color:rgba(255,255,255,.72);font-weight:600;font-size:12px}
-  .scrollcue .arr{font-size:18px;animation:bob 1.8s ease-in-out infinite}
-
-  /* ---------- prize showcase (premium studio stage) ---------- */
-  .showcase{position:relative;height:clamp(340px,44vw,470px);display:flex;align-items:center;justify-content:center;perspective:1200px}
-  .showcase .glow{
-    position:absolute;width:min(88%,460px);aspect-ratio:1;border-radius:50%;
-    background:radial-gradient(circle,rgba(255,255,255,.34),rgba(249,196,61,.18) 52%,transparent 70%);
-    filter:blur(4px);animation:glow 5s ease-in-out infinite;
-  }
-  .floor{
-    position:absolute;z-index:0;bottom:clamp(6px,3vw,24px);width:58%;height:28px;border-radius:50%;
-    background:radial-gradient(ellipse at center,rgba(0,0,0,.34),transparent 70%);filter:blur(8px);
-  }
-  .stage{
-    position:relative;z-index:1;width:clamp(250px,33vw,384px);aspect-ratio:372/404;
-    border-radius:30px;overflow:hidden;
-    background:radial-gradient(120% 100% at 50% 0%,#17171b 0%,#0b0b0d 60%,#050506 100%);
-    box-shadow:0 46px 92px rgba(50,16,0,.55), 0 10px 26px rgba(0,0,0,.4), inset 0 0 0 1px rgba(255,255,255,.08);
-    animation:floaty 6s ease-in-out infinite;will-change:transform;
-  }
-  .slide{
-    position:absolute;inset:0;z-index:1;opacity:0;transform:scale(1.07);filter:blur(7px);
-    transition:opacity .9s ease, transform 1.15s cubic-bezier(.2,.7,.2,1), filter .9s ease;
-    will-change:opacity,transform,filter;
-  }
-  .slide.is-active{opacity:1;transform:scale(1);filter:blur(0)}
-  .slide .fallback,.slide .clip{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .slide .clip{z-index:1}
-  /* sweeping glass sheen */
-  .stage .sheen{
-    position:absolute;inset:0;z-index:2;pointer-events:none;mix-blend-mode:screen;
-    background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.12) 48%,rgba(255,255,255,.02) 56%,transparent 72%);
-    transform:translateX(-75%);animation:sheen 7s ease-in-out infinite;
-  }
-  .stage .vignette{position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(135% 95% at 50% 0%,transparent 48%,rgba(0,0,0,.55) 100%)}
-  .stage .rim{position:absolute;inset:0;z-index:4;pointer-events:none;border-radius:30px;box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -34px 60px rgba(0,0,0,.42)}
-  .stage .tag{position:absolute;top:17px;left:19px;z-index:5;font-weight:600;font-size:10px;letter-spacing:.18em;color:rgba(255,255,255,.62)}
-  .stage .cap{
-    position:absolute;left:0;right:0;bottom:0;z-index:5;
-    padding:16px 18px;display:flex;justify-content:space-between;align-items:center;
-    background:linear-gradient(0deg,rgba(0,0,0,.7),transparent);pointer-events:none;
-  }
-  .caps{position:relative;display:inline-block;min-width:132px;height:17px}
-  .capname{position:absolute;left:0;top:0;font-weight:700;font-size:13.5px;color:#fff;letter-spacing:.01em;white-space:nowrap;opacity:0;transition:opacity .9s ease}
-  .capname.is-on{opacity:1}
-  .cdots{display:flex;gap:6px}
-  .cdot{width:14px;height:5px;border-radius:5px;background:rgba(255,255,255,.28);transition:background .4s,width .4s}
-  .cdot.on{background:#fff;width:22px}
-  .spark{position:absolute;z-index:2;color:#fff;animation:glow 3s ease-in-out infinite}
-  .spark.g{color:var(--gold)}
-  @keyframes sheen{0%{transform:translateX(-75%)}55%,100%{transform:translateX(75%)}}
-
-  /* ---------- game (still on orange) ---------- */
-  .game{position:relative;z-index:2;padding:8px clamp(20px,5vw,48px) clamp(44px,6vw,64px)}
-  .game .center{text-align:center}
-  .game h2{font-weight:800;font-size:clamp(30px,5vw,40px);line-height:1;letter-spacing:-.01em;color:#fff;margin:10px 0 0}
-  .game .sub{color:rgba(255,255,255,.82);margin-top:12px}
-  .statements{
-    display:grid;grid-template-columns:1fr 1fr;gap:16px;
-    max-width:820px;margin:30px auto 0;
-  }
-  .stmt{
-    display:flex;gap:14px;align-items:center;text-align:left;
-    background:#fff;border:2px solid transparent;border-radius:16px;
-    padding:18px 20px;cursor:pointer;color:var(--ink);
-    font-weight:500;font-size:clamp(13.5px,1.5vw,14.5px);line-height:1.35;
-    box-shadow:0 6px 18px rgba(120,45,0,.16);
-    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
-    width:100%;font-family:inherit;
-  }
-  .stmt:hover{transform:translateY(-2px)}
-  .stmt:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
-  .stmt .ltr{
-    width:44px;height:44px;flex:none;border-radius:12px;
-    background:rgba(231,97,0,.1);display:flex;align-items:center;justify-content:center;
-    font-weight:800;font-size:17px;color:var(--orange);transition:background .15s, color .15s;
-  }
-  .stmt .hot{color:var(--orange);font-weight:700}
-  .stmt.sel{border-color:var(--ink);box-shadow:0 12px 28px rgba(120,45,0,.3)}
-  .stmt.sel .ltr{background:var(--orange);color:#fff}
-
-  .submit-wrap{display:flex;flex-direction:column;align-items:center;gap:11px;margin-top:32px}
-  #btnSubmit{width:min(300px,86vw);font-size:15px;padding:15px}
-  .submit-hint{font-size:11px;color:rgba(255,255,255,.62)}
-
-  /* entry modal (popup) */
-  .modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}
-  .modal[hidden]{display:none!important}
-  .modal-backdrop{position:absolute;inset:0;background:rgba(18,9,0,.58);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);animation:fadein .25s ease}
-  .modal-card{
-    position:relative;z-index:1;width:min(620px,100%);max-height:min(92vh,780px);overflow:auto;
-    background:#fff;border-radius:22px;padding:clamp(28px,4vw,38px) clamp(22px,4vw,36px);
-    box-shadow:0 30px 90px rgba(50,20,0,.45);animation:modalin .38s cubic-bezier(.2,.7,.2,1);
-  }
-  .modal-card .center{text-align:center}
-  .modal-card h3{font-weight:800;font-size:clamp(22px,3.4vw,27px);line-height:1.12;color:var(--ink);margin:14px 0 0;text-align:center}
-  .modal-card .fsub{color:rgba(31,39,52,.66);margin-top:10px;font-size:13.5px;text-align:center}
-  .modal-x{position:absolute;top:12px;right:14px;z-index:2;width:34px;height:34px;border:0;border-radius:50%;background:rgba(31,39,52,.07);color:var(--ink);font:400 20px/1 'Poppins',sans-serif;cursor:pointer;transition:background .15s}
-  .modal-x:hover{background:rgba(31,39,52,.14)}
-  .modal-x:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
-  body.no-scroll{overflow:hidden}
-  @keyframes fadein{from{opacity:0}to{opacity:1}}
-  @keyframes modalin{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
-  .field label{display:block;font-weight:600;font-size:11px;color:rgba(31,39,52,.62);margin:0 0 5px}
-  .field input{
-    width:100%;border:1.5px solid rgba(31,39,52,.28);border-radius:10px;
-    padding:12px 13px;font-family:inherit;font-size:13.5px;color:var(--ink);background:#fff;
-    transition:border-color .15s, box-shadow .15s;
-  }
-  .field input::placeholder{color:rgba(31,39,52,.4)}
-  .field input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(231,97,0,.14)}
-  .field.bad input{border-color:#d33f2f;box-shadow:0 0 0 3px rgba(211,63,47,.13)}
-  .field .err{display:none;color:#d33f2f;font-weight:600;font-size:10.5px;margin-top:4px}
-  .field.bad .err{display:block}
-  .consent{display:flex;gap:9px;align-items:flex-start;margin-top:16px;font-size:12px;color:rgba(31,39,52,.66)}
-  .consent input{margin-top:2px;width:16px;height:16px;accent-color:var(--orange);flex:none}
-  .consent.bad{color:#d33f2f}
-  #btnFinish{margin-top:20px;width:100%;font-size:15px;padding:15px}
-
-  .confetti{font-weight:800;font-size:34px;color:var(--orange);text-align:center;line-height:1}
-  .done h3{font-weight:800;font-size:24px;color:var(--ink);margin-top:14px;text-align:center}
-  .done p{color:rgba(31,39,52,.66);max-width:400px;margin:12px auto 0;text-align:center;font-size:13.5px}
-  .done .chips{display:flex;gap:9px;justify-content:center;margin-top:22px;flex-wrap:wrap}
-
-  /* ---------- footer ---------- */
-  footer{
-    position:relative;overflow:hidden;background:var(--ink);color:#fff;
-    padding:26px clamp(20px,5vw,48px);
-    display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
-  }
-  footer .brand{font-size:16px;color:#fff;position:relative;z-index:2}
-  footer .fine{font-size:11px;color:rgba(255,255,255,.45);position:relative;z-index:2}
-
-  /* ---------- animations ---------- */
-  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
-  @keyframes glow{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:.8;transform:scale(1.06)}}
-  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
-  @keyframes slidein{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-
-  /* ---------- responsive ---------- */
-  @media(max-width:820px){
-    .hook{grid-template-columns:1fr;gap:12px;text-align:center}
-    .hook .lede{margin-left:auto;margin-right:auto}
-    .hook-chips,.scrollcue{justify-content:center}
-    .showcase{order:-1;height:clamp(300px,80vw,400px)}
-    .statements{grid-template-columns:1fr}
-    .grid2{grid-template-columns:1fr}
-  }
-  @media(prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    *{animation:none!important;transition:none!important}
-  }
-  [hidden]{display:none!important}
-</style>
+  </script>
 </head>
+
 <body>
 <main class="page">
 
+  <!-- ==================================================================
+       HERO  (orange field: nav + hook + game all sit on this section)
+       ================================================================== -->
   <section class="hero">
+
+    <!-- decorative concentric-ring motif (top-left + bottom + right) -->
     <div class="rings" aria-hidden="true">
-      <!-- top-left corner motif -->
       <div class="ring" style="width:360px;height:360px;left:-150px;top:-160px;border-color:rgba(255,255,255,.14)"></div>
       <div class="ring" style="width:230px;height:230px;left:-80px;top:-90px;border-color:rgba(255,255,255,.11)"></div>
       <div class="ring" style="width:120px;height:120px;left:-24px;top:-30px;border-color:rgba(249,196,61,.28)"></div>
-      <!-- bottom + right motif -->
       <div class="ring" style="width:520px;height:520px;left:-160px;bottom:-190px"></div>
       <div class="ring" style="width:360px;height:360px;left:-70px;bottom:-120px"></div>
       <div class="ring" style="width:640px;height:640px;right:-260px;bottom:-260px"></div>
@@ -308,7 +63,7 @@
       <div class="ring" style="width:250px;height:250px;right:-40px;top:120px;border-color:rgba(255,255,255,.1)"></div>
     </div>
 
-    <!-- nav -->
+    <!-- ---------- Nav ---------- -->
     <nav class="top">
       <div>
         <div class="brand">ADL<span class="up">&#8593;</span>FT</div>
@@ -317,8 +72,10 @@
       <span class="wchip">SCAN &middot; PLAY &middot; WIN</span>
     </nav>
 
-    <!-- SECTION 1: HOOK -->
+    <!-- ---------- Hook (copy + prize showcase) ---------- -->
     <div class="hook">
+
+      <!-- copy -->
       <div class="hook-copy">
         <span class="spark g headspark" aria-hidden="true">&#10022;</span>
         <span class="eyebrow"><span class="eyebrow-tick" aria-hidden="true">&#10022;</span><span class="wchip solid">AI SEARCH CHALLENGE</span></span>
@@ -332,7 +89,7 @@
         <a class="scrollcue" href="#game"><span>Scroll to play</span><span class="arr">&#8595;</span></a>
       </div>
 
-      <!-- premium product showcase -->
+      <!-- prize showcase: cross-fading product clips (photo fallback per clip) -->
       <div class="showcase">
         <div class="glow" aria-hidden="true"></div>
         <div class="floor" aria-hidden="true"></div>
@@ -357,7 +114,7 @@
           <span class="tag">THE PRIZE</span>
           <div class="cap">
             <span class="caps">
-              <span class="capname is-on" data-idx="0">AirPods (4th Gen)</span>
+              <span class="capname is-on" data-idx="0">AirPods</span>
               <span class="capname" data-idx="1">WHOOP Band</span>
             </span>
             <span class="cdots"><span class="cdot on" data-dot="0"></span><span class="cdot" data-dot="1"></span></span>
@@ -368,12 +125,13 @@
       </div>
     </div>
 
-    <!-- SECTION 2: GAME -->
+    <!-- ---------- Game (pick-the-lie) ---------- -->
     <div class="game" id="game">
       <div class="center"><span class="wchip solid" id="stepChip">STEP 1 OF 2</span></div>
       <h2 class="center">WHICH ONE'S THE LIE?</h2>
       <p class="sub center">Tap the stat you think is false.</p>
 
+      <!-- statement cards are injected by js/main.js -->
       <div class="statements" id="statements" role="radiogroup" aria-label="Which statement is the lie?"></div>
 
       <div class="submit-wrap">
@@ -383,7 +141,9 @@
     </div>
   </section>
 
-  <!-- footer -->
+  <!-- ==================================================================
+       FOOTER
+       ================================================================== -->
   <footer>
     <div class="rings" aria-hidden="true" style="position:absolute;inset:0">
       <div class="ring" style="width:300px;height:300px;left:-120px;bottom:-160px;border-color:rgba(255,255,255,.06)"></div>
@@ -395,17 +155,19 @@
 
 </main>
 
-<!-- entry modal (popup) -->
+<!-- ====================================================================
+     ENTRY MODAL  (Step 2 form + confirmation; opened from "Submit my answer")
+     ==================================================================== -->
 <div class="modal" id="entryModal" hidden>
   <div class="modal-backdrop" data-close="1"></div>
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <button class="modal-x" id="modalClose" type="button" aria-label="Close">&times;</button>
 
-    <!-- step 2: entry form -->
+    <!-- Step 2: entry form -->
     <form id="entryForm" novalidate>
       <div class="center"><span class="chip" style="border-color:var(--orange);color:var(--orange)">STEP 2 OF 2</span></div>
       <h3 id="modalTitle">NICE PICK. WHERE DO WE REACH YOU?</h3>
-      <p class="fsub">Winner is drawn at random and contacted directly.</p>
+      <p class="fsub">Winners are drawn at random and contacted directly.</p>
       <div class="grid2">
         <div class="field" data-field="name">
           <label for="f-name">Name</label>
@@ -437,7 +199,7 @@
       <button class="btn" id="btnFinish" type="submit">Enter the draw &#8594;</button>
     </form>
 
-    <!-- confirmation -->
+    <!-- Confirmation -->
     <div class="done" id="doneCard" hidden>
       <div class="confetti">&#127881; YOU'RE IN!</div>
       <h3>ENTRY RECEIVED.</h3>
@@ -450,265 +212,5 @@
   </div>
 </div>
 
-<script>
-(function(){
-  "use strict";
-
-  /* ---- content: the six statements (one is the lie: B) ----
-     Each statement is split into segments; segments marked hot:true
-     render the number/phrase in AdLift orange, matching the standee. */
-  var STATEMENTS = [
-    { letter:"A", segs:[ {t:"68%",hot:true}, {t:" of Google searches now end without a click."} ] },
-    { letter:"B", segs:[ {t:"To get cited by ChatGPT, your page must "}, {t:"rank #1",hot:true}, {t:" on Google."} ] },
-    { letter:"C", segs:[ {t:"Traffic from AI search features converts at a rate "}, {t:"4.4×",hot:true}, {t:" higher than organic search traffic."} ] },
-    { letter:"D", segs:[ {t:"Over "}, {t:"80%",hot:true}, {t:" of sources cited in Google AI Overviews don’t rank in the organic top 3."} ] },
-    { letter:"E", segs:[ {t:"A page can be cited in an AI Overview even if it doesn’t rank in Google’s "}, {t:"Top 100",hot:true}, {t:"."} ] },
-    { letter:"F", segs:[ {t:"87%",hot:true}, {t:" of U.S. adults now read the AI-generated summaries in their search results."} ]}
-  ];
-
-  var state = { selected:null, showForm:false, done:false };
-
-  /* ---- build the statement cards ---- */
-  var wrap = document.getElementById("statements");
-  STATEMENTS.forEach(function(s, i){
-    var card = document.createElement("button");
-    card.type = "button";
-    card.className = "stmt";
-    card.setAttribute("role","radio");
-    card.setAttribute("aria-checked","false");
-    card.dataset.idx = String(i);
-    card.tabIndex = i === 0 ? 0 : -1;
-
-    var ltr = document.createElement("div");
-    ltr.className = "ltr";
-    ltr.textContent = s.letter;
-    card.appendChild(ltr);
-
-    var body = document.createElement("div");
-    s.segs.forEach(function(seg){
-      var span = document.createElement("span");
-      if (seg.hot) span.className = "hot";
-      span.textContent = seg.t;
-      body.appendChild(span);
-    });
-    card.appendChild(body);
-
-    card.addEventListener("click", function(){ select(i); });
-    wrap.appendChild(card);
-  });
-
-  var cards = Array.prototype.slice.call(wrap.querySelectorAll(".stmt"));
-
-  /* keyboard: arrow keys move within the radiogroup */
-  wrap.addEventListener("keydown", function(e){
-    var idx = cards.indexOf(document.activeElement);
-    if (idx === -1) return;
-    var next = null;
-    if (e.key === "ArrowRight" || e.key === "ArrowDown") next = (idx + 1) % cards.length;
-    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = (idx - 1 + cards.length) % cards.length;
-    if (next !== null){ e.preventDefault(); cards[next].focus(); select(next); }
-  });
-
-  var btnSubmit = document.getElementById("btnSubmit");
-  var submitHint = document.getElementById("submitHint");
-
-  function select(i){
-    state.selected = i;
-    cards.forEach(function(c, ci){
-      var on = ci === i;
-      c.classList.toggle("sel", on);
-      c.setAttribute("aria-checked", on ? "true" : "false");
-      c.tabIndex = on ? 0 : -1;
-    });
-    btnSubmit.disabled = false;
-    btnSubmit.setAttribute("aria-disabled","false");
-    btnSubmit.classList.remove("off");
-    submitHint.textContent = "Locked in — you can still change it";
-  }
-
-  /* ---- submit answer -> open the entry modal (popup, no layout shift) ---- */
-  var entryForm  = document.getElementById("entryForm");
-  var modal      = document.getElementById("entryModal");
-  var modalClose = document.getElementById("modalClose");
-  var lastFocus  = null;
-
-  function openModal(){
-    lastFocus = document.activeElement;
-    modal.hidden = false;
-    document.body.classList.add("no-scroll");
-    var first = document.getElementById("f-name");
-    if (first && !state.done) setTimeout(function(){ first.focus(); }, 60);
-    else modalClose.focus();
-  }
-  function closeModal(){
-    modal.hidden = true;
-    document.body.classList.remove("no-scroll");
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
-  }
-
-  btnSubmit.addEventListener("click", function(){
-    if (state.selected === null) return;
-    openModal();
-  });
-  modalClose.addEventListener("click", closeModal);
-  modal.addEventListener("click", function(e){
-    if (e.target && e.target.getAttribute("data-close")) closeModal();
-  });
-  document.addEventListener("keydown", function(e){
-    if (e.key === "Escape" && !modal.hidden) closeModal();
-  });
-
-  /* ---- validation ---- */
-  function markField(name, bad){
-    var el = entryForm.querySelector('[data-field="'+name+'"]');
-    if (el) el.classList.toggle("bad", bad);
-  }
-  function isEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
-  function isPhone(v){ return (v.replace(/[^\d]/g,"").length >= 7); }
-
-  entryForm.addEventListener("submit", function(e){
-    e.preventDefault();
-    // spam honeypot: real users never fill this hidden field
-    if (document.getElementById("f-website").value) { finish(); return; }
-    var f = entryForm;
-    var name = f.name.value.trim();
-    var email = f.email.value.trim();
-    var phone = f.phone.value.trim();
-    var company = f.company.value.trim();
-    var consent = document.getElementById("f-consent").checked;
-
-    var ok = true;
-    markField("name", !name); if (!name) ok = false;
-    markField("email", !isEmail(email)); if (!isEmail(email)) ok = false;
-    markField("phone", !isPhone(phone)); if (!isPhone(phone)) ok = false;
-    markField("company", !company); if (!company) ok = false;
-    document.getElementById("consentRow").classList.toggle("bad", !consent);
-    if (!consent) ok = false;
-
-    if (!ok){
-      var firstBad = f.querySelector(".field.bad input");
-      if (firstBad) firstBad.focus();
-      return;
-    }
-
-    /* ---- entry payload ----
-       No backend is wired in this prototype. To make entries live,
-       POST `entry` to your endpoint / form service (e.g. Formspree,
-       an API route, or a Google Sheet webhook) below. */
-    var entry = {
-      name: name, email: email, phone: phone, company: company,
-      pickedLetter: STATEMENTS[state.selected].letter,
-      pickedIndex: state.selected,
-      consent: consent,
-      ts: new Date().toISOString()
-    };
-    // e.g. fetch("/api/enter", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(entry)});
-    console.log("Quiz entry (prototype — not sent):", entry);
-
-    finish();
-  });
-
-  function finish(){
-    state.done = true;
-    document.getElementById("stepChip").textContent = "DONE";
-    entryForm.hidden = true;
-    document.getElementById("doneCard").hidden = false;
-    modalClose.focus();
-  }
-
-  /* share */
-  var btnShare = document.getElementById("btnShare");
-  if (btnShare){
-    btnShare.addEventListener("click", function(){
-      var shareData = {
-        title: "Spot the Lie · AdLift",
-        text: "One of six AI-search stats is false. Can you spot the lie?",
-        url: location.href
-      };
-      if (navigator.share){ navigator.share(shareData).catch(function(){}); }
-      else if (navigator.clipboard){
-        navigator.clipboard.writeText(location.href).then(function(){
-          btnShare.textContent = "Link copied ✓";
-        }).catch(function(){});
-      }
-    });
-  }
-
-  /* ---- prize showcase: cinematic AirPods → WHOOP sequence ----
-     Each clip plays its full rotation, then a cross-fade (scale + defocus)
-     hands off to the other. Timing follows the clips themselves (the 'ended'
-     event) with a minimum dwell so neither product feels rushed, and a max
-     dwell as a safety net if a clip can't play. */
-  var slides  = Array.prototype.slice.call(document.querySelectorAll(".slide"));
-  var clips   = slides.map(function(s){ return s.querySelector(".clip"); });
-  var dots    = Array.prototype.slice.call(document.querySelectorAll(".cdot"));
-  var capNames = Array.prototype.slice.call(document.querySelectorAll(".capname"));
-  var MIN_DWELL = 3400;   // ms — each product reads as premium, not rushed
-  var MAX_DWELL = 8000;   // ms — safety net if 'ended' never fires
-  var active = 0, shownAt = 0, timer = null;
-
-  function play(v){ if (v){ try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch(e){} } }
-
-  clips.forEach(function(v){
-    if (!v) return;
-    v.loop = false;
-    // if the mp4 is missing/undecodable, hide the video so the photo shows
-    v.addEventListener("error", function(){ v.style.display = "none"; });
-    // when a clip finishes its rotation, hand off (respecting the min dwell)
-    v.addEventListener("ended", function(){
-      if (String(active) === v.dataset.idx) scheduleNext();
-    });
-  });
-
-  function show(n){
-    active = n; shownAt = Date.now();
-    // slide + label share the same class-toggle and the same transition, so the
-    // caption cross-fades in perfect lockstep with the product — never out of sync
-    slides.forEach(function(s, i){ s.classList.toggle("is-active", i === n); });
-    capNames.forEach(function(c, i){ c.classList.toggle("is-on", i === n); });
-    dots.forEach(function(d, i){ d.classList.toggle("on", i === n); });
-    var v = clips[n];
-    if (v){ try { v.currentTime = 0; } catch(e){} play(v); }
-    armSafety();
-  }
-
-  function next(){ show(active ? 0 : 1); }
-
-  function scheduleNext(){            // called on 'ended'
-    var wait = Math.max(0, MIN_DWELL - (Date.now() - shownAt));
-    clearTimeout(timer);
-    timer = setTimeout(next, wait);
-  }
-
-  function armSafety(){               // fires only if 'ended' never comes
-    clearTimeout(timer);
-    timer = setTimeout(next, MAX_DWELL);
-  }
-
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  function startShowcase(){
-    if (!clips[0]) return;
-    if (reduce){
-      play(clips[0]);                 // gentle: first product only, no auto-switch
-    } else if (slides.length > 1){
-      shownAt = Date.now();
-      play(clips[0]);
-      armSafety();
-      // autoplay safety: resume on tab focus and on first interaction
-      document.addEventListener("visibilitychange", function(){ if (!document.hidden) play(clips[active]); });
-      window.addEventListener("pointerdown", function once(){ play(clips[active]); window.removeEventListener("pointerdown", once); }, { passive:true });
-    }
-  }
-  // preload="none" + deferred start: the poster paints first (fast LCP), and the
-  // clips only begin loading after the page has painted, so they never block it.
-  function deferStart(){
-    if ("requestIdleCallback" in window) requestIdleCallback(startShowcase, { timeout:1600 });
-    else setTimeout(startShowcase, 250);
-  }
-  if (document.readyState === "complete") deferStart();
-  else window.addEventListener("load", deferStart);
-})();
-</script>
 </body>
 </html>

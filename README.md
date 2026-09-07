@@ -12,12 +12,16 @@ reveal → entry form → confirmation flow.
 ## Structure
 
 ```
-index.html      # the whole page (self-contained HTML + CSS + JS)
-assets/         # airpods.jpg, whoop.jpg — prize art & video poster/fallbacks
-uploads/        # (optional) the two product .mp4 clips — see uploads/README.md
+index.html        # semantic, section-wise markup (hero · game · footer · modal)
+css/styles.css    # all styles
+js/main.js        # all behaviour (quiz, entry modal, prize showcase)
+assets/           # airpods.jpg, whoop.jpg — prize art & video poster/fallbacks
+uploads/          # optimized product clips (.webm + .mp4) — see uploads/README.md
 ```
 
-The page is a **static site** — no build step, no dependencies.
+The page is a **static site** — no build step, no dependencies. `index.html` links
+`css/styles.css` and `js/main.js` with relative paths, so keep the folder structure
+intact when deploying (or adjust the two paths if you mount it elsewhere).
 
 ## Run locally
 

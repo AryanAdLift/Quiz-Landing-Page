@@ -5,6 +5,29 @@
 (function(){
   "use strict";
 
+  /* ---- always present the hero first ----
+     A stale "#game" fragment (from the "Scroll to play" link) or browser
+     scroll-restoration could load the page scrolled past the hero, cropping
+     the H1 + video. Neutralise both so every load starts at the top. */
+  var loadedWithHash = !!location.hash;
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  function jumpTop(){ try { window.scrollTo({ top:0, left:0, behavior:"instant" }); } catch(e){ window.scrollTo(0,0); } }
+  if (loadedWithHash){
+    try { history.replaceState(null, "", location.pathname + location.search); } catch(e){}
+    jumpTop();
+  }
+  window.addEventListener("load", function(){ if (loadedWithHash) jumpTop(); });
+
+  /* smooth-scroll the "Scroll to play" cue — without persisting a #hash */
+  var scrollCue = document.querySelector(".scrollcue");
+  if (scrollCue){
+    scrollCue.addEventListener("click", function(e){
+      e.preventDefault();
+      var g = document.getElementById("game");
+      if (g) g.scrollIntoView({ behavior:"smooth", block:"start" });
+    });
+  }
+
   /* ---- content: the six statements (one is the lie: B) ----
      Each statement is split into segments; segments marked hot:true
      render the number/phrase in AdLift orange, matching the standee. */
